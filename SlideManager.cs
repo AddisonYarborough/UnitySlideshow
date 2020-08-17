@@ -11,7 +11,7 @@ public class SlideManager : MonoBehaviour {
 
     //The panel that overlays all _slides and changes from clear to black
     [SerializeField]
-    private Image _fadeSlide;
+    private Image _fadeSlide = default;
 
     [Header("Config Values")]
     [SerializeField, Tooltip("The duration (in seconds) over which the fade slide will fade in / out")]
@@ -31,15 +31,12 @@ public class SlideManager : MonoBehaviour {
     };
 
     //The slide we're currently viewing
-    private int _currentSlide;
+    private int _currentSlide = -1;
 
     // Whether the fade slide is currently fading
     private bool _isTransitioning = false;
 
     private void Start() {
-        //We set the _currentSlide to -1 so that when it's incremented, it will be the first (0th) slide
-        _currentSlide = -1;
-
         // Set our fade to black slide to black so that the audience can not see the first slide
         _fadeSlide.color = Color.black;
     }
